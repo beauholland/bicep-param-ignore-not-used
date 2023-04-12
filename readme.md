@@ -4,7 +4,21 @@ If unused parameters are present the deployment currently fails:
 
 `InvalidTemplate - Deployment template validation failed: 'The template parameters 'paramNotUsed' in the parameters file are not valid; they are not present in the original template and can therefore not be provided at deployment time. The only supported parameters for this template are 'paramUsed'.`
 
-Similar post here:
+**What we want**
+
+We want to be able to use a .parameters.json file that contains a parameter that is NOT used - at least not error, or have the option to change to a warning?
+
+One option might be adding option for tooling to: ignore, warn, error (current behaviour) if unused parameters are being passed.
+
+**Why**
+
+From an Azure DevOps Pipelines variables we want to be able to store variables in x2 places:
+- Library Variable Sets using KeyVault for sensitive values
+- .env.parameters.json files for all other non sensitive values
+
+We have multiple .bicep files that require different parameters .env.parameters.json and don't require all params.
+
+**Similar post here**
 
 [Feature Suggestion] Deployment Parameters: Allow unused paramaters in deployment
 
